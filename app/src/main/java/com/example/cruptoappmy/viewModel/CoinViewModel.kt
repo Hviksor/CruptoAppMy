@@ -22,9 +22,12 @@ class CoinViewModel(application: Application) : AndroidViewModel(application) {
         val disposable = ApiFactory.apiService.getTopCoinsInfo()
             .map { it.data?.map { it.coinInfo?.name }?.joinToString(",") }
             .flatMap { ApiFactory.apiService.getFullPriceList(fsyms = it) }
+            .map { getPriceListFromRawData(it) }
             .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
+                it?.let {
+                    db.coinPriceInfoDao().InsertPriceList(it)
+                }
 
                 Log.e("testOfLoadingDataOK", it.toString())
 
@@ -47,7 +50,6 @@ class CoinViewModel(application: Application) : AndroidViewModel(application) {
                 val priceInfo = Gson().fromJson(currencyJson.getAsJsonObject(currencyKey), CoinPriceInfo::class.java)
                 result.add(priceInfo)
             }
-
 
         }
         return result
