@@ -1,5 +1,12 @@
 package com.example.cruptoappmy.pojo
 
+import com.google.gson.annotations.Expose
 
-class CoinInfo {
-}
+import com.google.gson.annotations.SerializedName
+
+
+data class CoinInfo(
+    @SerializedName("Name")
+    @Expose
+    val name: String? = null
+)
