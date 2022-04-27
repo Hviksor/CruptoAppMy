@@ -3,6 +3,7 @@ package com.example.cruptoappmy.viewModel
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.cruptoappmy.api.Repository
 import com.example.cruptoappmy.database.AppDatabase
@@ -18,8 +19,14 @@ class CoinViewModel(application: Application) : AndroidViewModel(application) {
     private val repo = Repository()
     val getCoinPrises = db.getCoinPriceList()
 
+
     init {
         getCoinPriceList()
+    }
+
+    fun getDetailInformation(name: String): LiveData<CoinPriceInfo> {
+        return db.getSingleCoinInfo(name)
+
     }
 
 
@@ -29,6 +36,7 @@ class CoinViewModel(application: Application) : AndroidViewModel(application) {
                 val listResult = ArrayList<CoinPriceInfo>()
                 val coinsString = repo.getTopCoinList().body()?.data?.map { it.coinInfo?.name }?.joinToString(",")
                 val coinJsonObject = repo.getCoinPrice(coinsString).body()?.CoinPriceJsonObject?.asJsonObject
+                Log.e("Test", "$coinJsonObject")
                 val keySet = coinJsonObject?.keySet()
                 if (keySet != null) {
                     for (key in keySet) {
@@ -43,7 +51,6 @@ class CoinViewModel(application: Application) : AndroidViewModel(application) {
                     }
                 }
 
-                Log.e("Test", "$coinsString")
 
             }
         }

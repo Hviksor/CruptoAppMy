@@ -2,6 +2,9 @@ package com.example.cruptoappmy.pojo
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.cruptoappmy.api.ApiFactory
+import com.example.cruptoappmy.api.ApiFactory.BASE_IMG_URL
+import com.example.cruptoappmy.utils.getFormatedTime
 import com.google.gson.annotations.Expose
 
 import com.google.gson.annotations.SerializedName
@@ -35,7 +38,7 @@ data class CoinPriceInfo(
 
     @SerializedName("LASTUPDATE")
     @Expose
-    val lastupdate: Int? = null,
+    val lastupdate: Long? = null,
 
     @SerializedName("MEDIAN")
     @Expose
@@ -197,4 +200,13 @@ data class CoinPriceInfo(
     @Expose
     val imageurl: String? = null
 
-)
+) {
+    fun getFormattedTime(): String {
+        return getFormatedTime(lastupdate)
+
+    }
+
+    fun getImageURL(): String {
+        return BASE_IMG_URL + imageurl
+    }
+}
