@@ -12,7 +12,7 @@ class Repository {
         return ApiFactory.api.getTopCoinList()
     }
 
-    suspend fun getCoinPrice(fsyms: String): Response<CoinPriceInfoRawData> {
+    suspend fun getCoinPrice(fsyms: String?): Response<CoinPriceInfoRawData> {
         return ApiFactory.api.getCoinPrice(fsyms = fsyms)
     }
 }

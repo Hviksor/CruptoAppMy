@@ -1,5 +1,6 @@
 package com.example.cruptoappmy.database
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -13,9 +14,9 @@ interface CoinPriceInfoDao {
     suspend fun insertCoinPriceList(list: List<CoinPriceInfo>)
 
     @Query("SELECT * FROM full_price_info ORDER by lastupdate")
-    fun getCoinPriceList(): List<CoinPriceInfo>
+    fun getCoinPriceList(): LiveData<List<CoinPriceInfo>>
 
     @Query("SELECT * FROM full_price_info WHERE fromsymbol==:coinName LIMIT 1 ")
-    fun getSingleCoinInfo(coinName: String): CoinPriceInfo
+    fun getSingleCoinInfo(coinName: String): LiveData<CoinPriceInfo>
 
 }

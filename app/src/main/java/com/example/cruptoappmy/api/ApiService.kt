@@ -17,7 +17,7 @@ interface ApiService {
     @GET("pricemultifull")
     suspend fun getCoinPrice(
         @Query(QUERY_API_KEY) apiKey: String = API_KEY,
-        @Query(QUERY_FSUMS) fsyms: String,
+        @Query(QUERY_FSUMS) fsyms: String?,
         @Query(QUERY_TSUMS) tsyms: String = CURRENCY_C
     ): Response<CoinPriceInfoRawData>
 
