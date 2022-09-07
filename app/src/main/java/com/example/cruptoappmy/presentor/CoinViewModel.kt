@@ -1,15 +1,14 @@
-package com.example.cruptoappmy.viewModel
+package com.example.cruptoappmy.presentor
 
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.example.cruptoappmy.api.Repository
-import com.example.cruptoappmy.database.AppDatabase
+import com.example.cruptoappmy.data.network.Repository
+import com.example.cruptoappmy.data.database.AppDatabase
 import com.example.cruptoappmy.pojo.CoinPriceInfo
 import com.google.gson.Gson
-import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

@@ -1,4 +1,4 @@
-package com.example.cruptoappmy.screens
+package com.example.cruptoappmy.presentor.screeens
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,10 +9,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cruptoappmy.APP
 import com.example.cruptoappmy.R
-import com.example.cruptoappmy.adapters.CoinsAdapter
+import com.example.cruptoappmy.presentor.CoinsAdapter
 import com.example.cruptoappmy.databinding.FragmentFirstBinding
 import com.example.cruptoappmy.pojo.CoinPriceInfo
-import com.example.cruptoappmy.viewModel.CoinViewModel
+import com.example.cruptoappmy.presentor.CoinViewModel
 
 class FirstFragment : Fragment() {
     lateinit var binding: FragmentFirstBinding
@@ -22,7 +22,7 @@ class FirstFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentFirstBinding.inflate(layoutInflater, container, false)
         return binding.root
     }

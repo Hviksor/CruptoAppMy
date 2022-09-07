@@ -1,21 +1,16 @@
-package com.example.cruptoappmy.screens
+package com.example.cruptoappmy.presentor.screeens
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Adapter
 import androidx.activity.addCallback
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView
 import com.example.cruptoappmy.APP
 import com.example.cruptoappmy.R
-import com.example.cruptoappmy.adapters.CoinsAdapter
 import com.example.cruptoappmy.databinding.FragmentDetailBinding
-import com.example.cruptoappmy.databinding.FragmentFirstBinding
-import com.example.cruptoappmy.pojo.CoinPriceInfo
-import com.example.cruptoappmy.viewModel.CoinViewModel
+import com.example.cruptoappmy.presentor.CoinViewModel
 import com.squareup.picasso.Picasso
 
 class DetailFragment : Fragment() {
@@ -30,7 +25,7 @@ class DetailFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = FragmentDetailBinding.inflate(layoutInflater, container, false)
         return binding.root

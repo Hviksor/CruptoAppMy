@@ -1,4 +1,4 @@
-package com.example.cruptoappmy.adapters
+package com.example.cruptoappmy.presentor
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

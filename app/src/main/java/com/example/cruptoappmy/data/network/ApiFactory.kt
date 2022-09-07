@@ -1,4 +1,4 @@
-package com.example.cruptoappmy.api
+package com.example.cruptoappmy.data.network
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

@@ -2,8 +2,7 @@ package com.example.cruptoappmy.pojo
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.cruptoappmy.api.ApiFactory
-import com.example.cruptoappmy.api.ApiFactory.BASE_IMG_URL
+import com.example.cruptoappmy.data.network.ApiFactory.BASE_IMG_URL
 import com.example.cruptoappmy.utils.getFormatedTime
 import com.google.gson.annotations.Expose
 

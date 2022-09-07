@@ -1,4 +1,4 @@
-package com.example.cruptoappmy.database
+package com.example.cruptoappmy.data.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao

@@ -1,4 +1,4 @@
-package com.example.cruptoappmy.api
+package com.example.cruptoappmy.data.network
 
 import com.example.cruptoappmy.pojo.CoinInfoListOfData
 import com.example.cruptoappmy.pojo.CoinPriceInfoRawData
