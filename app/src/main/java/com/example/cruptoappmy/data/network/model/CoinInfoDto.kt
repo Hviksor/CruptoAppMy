@@ -1,15 +1,12 @@
-package com.example.cruptoappmy.pojo
+package com.example.cruptoappmy.data.network.model
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import com.example.cruptoappmy.data.network.ApiFactory.BASE_IMG_URL
-import com.example.cruptoappmy.utils.getFormatedTime
+
 import com.google.gson.annotations.Expose
 
 import com.google.gson.annotations.SerializedName
 
-@Entity(tableName = "full_price_info")
-data class CoinPriceInfo(
+
+data class CoinInfoDto(
     @SerializedName("TYPE")
     @Expose
     val type: String? = null,
@@ -18,7 +15,6 @@ data class CoinPriceInfo(
     @Expose
     val market: String? = null,
 
-    @PrimaryKey
     @SerializedName("FROMSYMBOL")
     @Expose
     val fromsymbol: String,
@@ -200,12 +196,5 @@ data class CoinPriceInfo(
     val imageurl: String? = null
 
 ) {
-    fun getFormattedTime(): String {
-        return getFormatedTime(lastupdate)
 
-    }
-
-    fun getImageURL(): String {
-        return BASE_IMG_URL + imageurl
-    }
 }

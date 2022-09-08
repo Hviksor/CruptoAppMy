@@ -6,24 +6,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cruptoappmy.APP
-import com.example.cruptoappmy.R
 import com.example.cruptoappmy.presentor.CoinsAdapter
 import com.example.cruptoappmy.databinding.FragmentFirstBinding
-import com.example.cruptoappmy.pojo.CoinPriceInfo
+import com.example.cruptoappmy.domain.CoinInfoEntity
 import com.example.cruptoappmy.presentor.CoinViewModel
 
 class FirstFragment : Fragment() {
-    lateinit var binding: FragmentFirstBinding
-    lateinit var adapter: CoinsAdapter
-    lateinit var rcView: RecyclerView
+    private var _binding: FragmentFirstBinding? = null
+    private val binding: FragmentFirstBinding
+        get() = _binding ?: throw RuntimeException("FragmentFirstBinding = null")
+    private lateinit var adapter: CoinsAdapter
+    private lateinit var rcView: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentFirstBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentFirstBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
@@ -33,17 +34,24 @@ class FirstFragment : Fragment() {
         adapter = CoinsAdapter()
         rcView = binding.rcView
         rcView.adapter = adapter
-        adapter.clickInterface = object : CoinsAdapter.clickItem {
-            override fun onClick(coinPriceInfo: CoinPriceInfo) {
-                val bundle = Bundle()
-                bundle.putString("name", coinPriceInfo.fromsymbol)
-                APP.navController.navigate(R.id.action_firstFragment_to_detailFragment, bundle)
-            }
+        adapter.onClick = {
+            launchNextFragment(it)
+        }
 
+        viewModel.coinInfoList.observe(viewLifecycleOwner) {
+            adapter.submitList(it)
         }
-        viewModel.getCoinPrises.observe(viewLifecycleOwner) {
-            adapter.listAd = it
-        }
+    }
+
+
+    fun launchNextFragment(coinInfoEntity: CoinInfoEntity) {
+        findNavController().navigate(FirstFragmentDirections.actionFirstFragmentToDetailFragment(coinInfoEntity))
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 }

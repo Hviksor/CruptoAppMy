@@ -1,7 +1,7 @@
 package com.example.cruptoappmy.data.network
 
-import com.example.cruptoappmy.pojo.CoinInfoListOfData
-import com.example.cruptoappmy.pojo.CoinPriceInfoRawData
+import com.example.cruptoappmy.data.network.model.CoinNamesListDto
+import com.example.cruptoappmy.data.network.model.CoinJsonContainerDto
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -12,14 +12,14 @@ interface ApiService {
         @Query(QUERY_API_KEY) apiKey: String = API_KEY,
         @Query(QUERY_LIMIT) limit: Int = 10,
         @Query(QUERY_TSYM) tsym: String = CURRENCY_C
-    ): Response<CoinInfoListOfData>
+    ): CoinNamesListDto
 
     @GET("pricemultifull")
     suspend fun getCoinPrice(
         @Query(QUERY_API_KEY) apiKey: String = API_KEY,
         @Query(QUERY_FSUMS) fsyms: String?,
         @Query(QUERY_TSUMS) tsyms: String = CURRENCY_C
-    ): Response<CoinPriceInfoRawData>
+    ): CoinJsonContainerDto
 
 
     companion object {

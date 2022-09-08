@@ -5,18 +5,17 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.cruptoappmy.pojo.CoinInfo
-import com.example.cruptoappmy.pojo.CoinPriceInfo
+import com.example.cruptoappmy.data.network.model.CoinInfoDto
 
 @Dao
 interface CoinPriceInfoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertCoinPriceList(list: List<CoinPriceInfo>)
+    suspend fun insertCoinPriceList(list: List<CoinInfoDbModel>)
 
     @Query("SELECT * FROM full_price_info ORDER by lastupdate")
-    fun getCoinPriceList(): LiveData<List<CoinPriceInfo>>
+    fun getCoinPriceList(): LiveData<List<CoinInfoDbModel>>
 
     @Query("SELECT * FROM full_price_info WHERE fromsymbol==:coinName LIMIT 1 ")
-    fun getSingleCoinInfo(coinName: String): LiveData<CoinPriceInfo>
+    fun getSingleCoinInfo(coinName: String): LiveData<CoinInfoDbModel>
 
 }

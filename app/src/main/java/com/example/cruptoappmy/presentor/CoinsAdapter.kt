@@ -1,46 +1,37 @@
 package com.example.cruptoappmy.presentor
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cruptoappmy.R
+import com.example.cruptoappmy.data.network.ApiFactory.BASE_IMG_URL
+import com.example.cruptoappmy.data.network.model.CoinInfoDto
 import com.example.cruptoappmy.databinding.ItemCoinInfoBinding
-import com.example.cruptoappmy.pojo.CoinPriceInfo
+import com.example.cruptoappmy.domain.CoinInfoEntity
 import com.squareup.picasso.Picasso
 
-class CoinsAdapter : RecyclerView.Adapter<CoinsAdapter.CoinsViewHolder>() {
-    var listAd: List<CoinPriceInfo> = listOf()
-        @SuppressLint("NotifyDataSetChanged")
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
-
+class CoinsAdapter : ListAdapter<CoinInfoEntity, CoinsAdapter.CoinsViewHolder>(DiffUtil()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoinsViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_coin_info, parent, false)
         return CoinsViewHolder(view)
     }
 
-    var clickInterface: clickItem? = null
+
+    var onClick: ((CoinInfoEntity) -> Unit)? = null
 
 
     override fun onBindViewHolder(holder: CoinsViewHolder, position: Int) {
-        val coin = listAd[position]
-        holder.tvSymbols.text = coin.fromsymbol.toString() + " / " + coin.tosymbol.toString()
-        holder.lastUpdate.text = coin.getFormattedTime()
+        val coin = getItem(position)
+        holder.tvSymbols.text = coin.fromSymbol + " / " + coin.toSymbol
+        holder.lastUpdate.text = coin.lastUpdate
         holder.price.text = coin.price.toString()
-        Picasso.get().load(coin.getImageURL()).into(holder.ivLogoCoin)
+        Picasso.get().load(BASE_IMG_URL + coin.imageUrl).into(holder.ivLogoCoin)
         holder.itemView.setOnClickListener {
-            clickInterface?.onClick(listAd[holder.adapterPosition])
+            onClick?.invoke(coin)
         }
     }
-
-    override fun getItemCount(): Int {
-        return listAd.size
-    }
-
 
     class CoinsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = ItemCoinInfoBinding.bind(itemView)
@@ -53,7 +44,7 @@ class CoinsAdapter : RecyclerView.Adapter<CoinsAdapter.CoinsViewHolder>() {
     }
 
     interface clickItem {
-        fun onClick(coinPriceInfo: CoinPriceInfo)
+        fun onClick(coinInfoDto: CoinInfoDto)
     }
 
 }

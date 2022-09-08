@@ -1,51 +1,51 @@
 package com.example.cruptoappmy.presentor.screeens
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.addCallback
-import androidx.lifecycle.ViewModelProvider
-import com.example.cruptoappmy.APP
-import com.example.cruptoappmy.R
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
+import com.example.cruptoappmy.data.network.ApiFactory.BASE_IMG_URL
 import com.example.cruptoappmy.databinding.FragmentDetailBinding
-import com.example.cruptoappmy.presentor.CoinViewModel
+import com.example.cruptoappmy.domain.CoinInfoEntity
 import com.squareup.picasso.Picasso
 
 class DetailFragment : Fragment() {
-    lateinit var binding: FragmentDetailBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        requireActivity().onBackPressedDispatcher.addCallback(this) {
-            APP.navController.navigate(R.id.action_detailFragment_to_firstFragment)
-        }
-    }
+    private val args by navArgs<DetailFragmentArgs>()
+    private lateinit var coinInfoEntity: CoinInfoEntity
+    private var _binding: FragmentDetailBinding? = null
+    private val binding: FragmentDetailBinding
+        get() = _binding ?: throw RuntimeException("FragmentDetailBinding == null")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        binding = FragmentDetailBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentDetailBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val viewModel = ViewModelProvider(this)[CoinViewModel::class.java]
-        val coinName = arguments?.getString("name")
-        coinName?.let { viewModel.getDetailInformation(it) }?.observe(viewLifecycleOwner) {
-            Picasso.get().load(it.getImageURL()).into(binding.ivLogoCoin)
-            binding.tvFromSymbol.text = it.fromsymbol
-            binding.tvMinPrice.text = it.lowday.toString()
-            binding.tvMaxPrice.text = it.highday.toString()
-            binding.tvLastMarket.text = it.lastmarket
-            binding.tvPrice.text = it.price.toString()
-            binding.tvLastUpdate.text = it.getFormattedTime()
-        }
 
+        bindFields()
+    }
 
+    private fun bindFields() {
+        coinInfoEntity = args.coiInfoEntity
+        Picasso.get().load(BASE_IMG_URL + coinInfoEntity.imageUrl).into(binding.ivLogoCoin)
+        binding.tvFromSymbol.text = coinInfoEntity.fromSymbol
+        binding.tvMinPrice.text = coinInfoEntity.lowDay.toString()
+        binding.tvMaxPrice.text = coinInfoEntity.highDay.toString()
+        binding.tvLastMarket.text = coinInfoEntity.lastMarket
+        binding.tvPrice.text = coinInfoEntity.price.toString()
+        binding.tvLastUpdate.text = coinInfoEntity.lastUpdate
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 }

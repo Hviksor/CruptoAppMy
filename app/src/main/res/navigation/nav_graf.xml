@@ -12,15 +12,16 @@
         tools:layout="@layout/fragment_first" >
         <action
             android:id="@+id/action_firstFragment_to_detailFragment"
-            app:destination="@id/detailFragment" />
+            app:destination="@id/detailFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.example.cruptoappmy.presentor.screeens.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" >
-        <action
-            android:id="@+id/action_detailFragment_to_firstFragment"
-            app:destination="@id/firstFragment" />
+        <argument
+            android:name="coiInfoEntity"
+            app:argType="com.example.cruptoappmy.domain.CoinInfoEntity" />
     </fragment>
 </navigation>
