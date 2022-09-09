@@ -11,7 +11,6 @@ import com.example.cruptoappmy.domain.CoinInfoEntity
 import com.squareup.picasso.Picasso
 
 class DetailFragment : Fragment() {
-    private val args by navArgs<DetailFragmentArgs>()
     private lateinit var coinInfoEntity: CoinInfoEntity
     private var _binding: FragmentDetailBinding? = null
     private val binding: FragmentDetailBinding
@@ -45,6 +44,10 @@ class DetailFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    companion object {
+        private v
     }
 
 }

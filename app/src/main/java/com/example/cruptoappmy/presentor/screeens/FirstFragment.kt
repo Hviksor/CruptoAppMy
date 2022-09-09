@@ -46,8 +46,6 @@ class FirstFragment : Fragment() {
 
 
     fun launchNextFragment(coinInfoEntity: CoinInfoEntity) {
-        findNavController().navigate(FirstFragmentDirections.actionFirstFragmentToDetailFragment(coinInfoEntity))
-
     }
 
     override fun onDestroy() {
