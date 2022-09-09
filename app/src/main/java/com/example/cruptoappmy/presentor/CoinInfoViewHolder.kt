@@ -3,7 +3,7 @@ package com.example.cruptoappmy.presentor
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cruptoappmy.databinding.ItemCoinInfoBinding
 
-class CoinsViewHolder(
+class CoinInfoViewHolder(
     val binding: ItemCoinInfoBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 }

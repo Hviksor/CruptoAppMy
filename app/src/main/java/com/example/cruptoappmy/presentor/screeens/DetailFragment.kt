@@ -9,6 +9,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.cruptoappmy.databinding.FragmentDetailBinding
 import com.example.cruptoappmy.domain.CoinInfoEntity
 import com.squareup.picasso.Picasso
+
 class DetailFragment : Fragment() {
     private val args by navArgs<DetailFragmentArgs>()
     private lateinit var coinInfoEntity: CoinInfoEntity

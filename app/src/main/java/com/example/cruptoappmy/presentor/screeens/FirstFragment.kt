@@ -34,6 +34,7 @@ class FirstFragment : Fragment() {
         adapter = CoinsAdapter()
         rcView = binding.rcView
         rcView.adapter = adapter
+        rcView.itemAnimator = null
         adapter.onClick = {
             launchNextFragment(it)
         }
