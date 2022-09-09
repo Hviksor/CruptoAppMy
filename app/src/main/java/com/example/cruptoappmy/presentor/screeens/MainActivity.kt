@@ -12,6 +12,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        navController = Navigation.findNavController(this, R.id.nav_contr)
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.nav_container_first, FirstFragment.getFragment())
+            .addToBackStack(null)
+            .commit()
     }
 }
