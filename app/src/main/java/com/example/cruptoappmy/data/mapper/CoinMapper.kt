@@ -1,6 +1,7 @@
 package com.example.cruptoappmy.data.mapper
 
 import com.example.cruptoappmy.data.database.CoinInfoDbModel
+import com.example.cruptoappmy.data.network.ApiFactory
 import com.example.cruptoappmy.data.network.model.CoinInfoDto
 import com.example.cruptoappmy.data.network.model.CoinJsonContainerDto
 import com.example.cruptoappmy.data.network.model.CoinNamesListDto
@@ -28,7 +29,11 @@ class CoinMapper {
 
     }
 
-    fun getFormattedTime(lastUpd: Long?): String {
+    private fun getImageURL(imageUrl: String?): String {
+        return BASE_IMG_URL + imageUrl
+    }
+
+    private fun getFormattedTime(lastUpd: Long?): String {
         val stamp = Timestamp(lastUpd?.times(1000) ?: 1)
         val date = Time(stamp.time)
         val pattern = "HH:mm:ss"
@@ -47,7 +52,7 @@ class CoinMapper {
             highDay = coinInfoDto.highday,
             lowDay = coinInfoDto.lowday,
             lastMarket = coinInfoDto.lastmarket,
-            imageUrl = coinInfoDto.imageurl
+            imageUrl = getImageURL(coinInfoDto.imageurl)
         )
     }
 
@@ -72,6 +77,12 @@ class CoinMapper {
             }
         }
         return listResult
+    }
+
+
+    companion object {
+
+        const val BASE_IMG_URL = "https://www.cryptocompare.com/"
     }
 
 

@@ -14,5 +14,5 @@ data class CoinInfoEntity(
     val highDay: Double?,
     val lowDay: Double?,
     val lastMarket: String?,
-    val imageUrl: String?
+    val imageUrl: String
 ):Parcelable

@@ -12,7 +12,7 @@ interface CoinPriceInfoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCoinPriceList(list: List<CoinInfoDbModel>)
 
-    @Query("SELECT * FROM full_price_info ORDER by lastupdate")
+    @Query("SELECT * FROM full_price_info ORDER by lastupdate DESC")
     fun getCoinPriceList(): LiveData<List<CoinInfoDbModel>>
 
     @Query("SELECT * FROM full_price_info WHERE fromsymbol==:coinName LIMIT 1 ")

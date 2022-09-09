@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.cruptoappmy.data.network.model.CoinInfoDto
 
-@Database(entities = [CoinInfoDbModel::class], version = 1)
+@Database(entities = [CoinInfoDbModel::class], version = 2, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun getDao(): CoinPriceInfoDao
@@ -26,7 +26,9 @@ abstract class AppDatabase : RoomDatabase() {
                 INSTANCE?.let {
                     return it
                 }
-                val db = Room.databaseBuilder(context, AppDatabase::class.java, DB_NAME).build()
+                val db = Room.databaseBuilder(context, AppDatabase::class.java, DB_NAME)
+                    .fallbackToDestructiveMigration()
+                    .build()
                 INSTANCE = db
                 return db
             }

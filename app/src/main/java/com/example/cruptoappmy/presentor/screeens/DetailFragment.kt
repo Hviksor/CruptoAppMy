@@ -6,11 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import com.example.cruptoappmy.data.network.ApiFactory.BASE_IMG_URL
 import com.example.cruptoappmy.databinding.FragmentDetailBinding
 import com.example.cruptoappmy.domain.CoinInfoEntity
 import com.squareup.picasso.Picasso
-
 class DetailFragment : Fragment() {
     private val args by navArgs<DetailFragmentArgs>()
     private lateinit var coinInfoEntity: CoinInfoEntity
@@ -34,7 +32,7 @@ class DetailFragment : Fragment() {
 
     private fun bindFields() {
         coinInfoEntity = args.coiInfoEntity
-        Picasso.get().load(BASE_IMG_URL + coinInfoEntity.imageUrl).into(binding.ivLogoCoin)
+        Picasso.get().load(coinInfoEntity.imageUrl).into(binding.ivLogoCoin)
         binding.tvFromSymbol.text = coinInfoEntity.fromSymbol
         binding.tvMinPrice.text = coinInfoEntity.lowDay.toString()
         binding.tvMaxPrice.text = coinInfoEntity.highDay.toString()
