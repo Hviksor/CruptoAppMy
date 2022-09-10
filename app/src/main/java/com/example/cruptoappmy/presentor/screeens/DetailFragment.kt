@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.example.cruptoappmy.databinding.FragmentDetailBinding
@@ -46,6 +48,7 @@ class DetailFragment : Fragment() {
             bindFields(it)
         }
 
+
     }
 
     private fun bindFields(coinInfoEntity: CoinInfoEntity) {
@@ -71,8 +74,10 @@ class DetailFragment : Fragment() {
                 }
             }
         }
+
         private const val EXTRA_FROM_SYMBOL = "fromSymbol"
         private const val EMPTY_SYMBOL = ""
     }
+
 
 }

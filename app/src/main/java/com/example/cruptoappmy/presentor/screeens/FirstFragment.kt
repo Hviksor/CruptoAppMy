@@ -1,10 +1,13 @@
 package com.example.cruptoappmy.presentor.screeens
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cruptoappmy.R
@@ -18,6 +21,7 @@ class FirstFragment : Fragment() {
         get() = _binding ?: throw RuntimeException("FragmentFirstBinding = null")
     private lateinit var adapter: CoinsAdapter
     private lateinit var rcView: RecyclerView
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,10 +53,11 @@ class FirstFragment : Fragment() {
         } else {
             R.id.fragmentContainerLand
         }
+
         requireActivity().supportFragmentManager
             .beginTransaction()
-            .replace(container, DetailFragment.getFragment(fromSymbol))
             .addToBackStack(null)
+            .replace(container, DetailFragment.getFragment(fromSymbol))
             .commit()
     }
 
@@ -62,9 +67,11 @@ class FirstFragment : Fragment() {
     }
 
     companion object {
+        const val FIRST_FRAGMENT_NAME = "first_name"
         fun getFragment(): FirstFragment {
             return FirstFragment()
         }
     }
+
 
 }
