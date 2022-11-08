@@ -1,16 +1,11 @@
-package com.example.cruptoappmy.presentor
+package com.example.cruptoappmy.presentation
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
-import com.example.cruptoappmy.data.CoinRepositoryImpl
-import com.example.cruptoappmy.domain.CoinInfoEntity
-import com.example.cruptoappmy.domain.GetCoinInfoListUseCase
-import com.example.cruptoappmy.domain.GetCoinInfoUseCase
-import com.example.cruptoappmy.domain.LoadDataUseCase
-import kotlinx.coroutines.launch
+import com.example.cruptoappmy.data.repository.CoinRepositoryImpl
+import com.example.cruptoappmy.domain.usecases.GetCoinInfoListUseCase
+import com.example.cruptoappmy.domain.usecases.GetCoinInfoUseCase
+import com.example.cruptoappmy.domain.usecases.LoadDataUseCase
 
 class CoinViewModel(application: Application) : AndroidViewModel(application) {
 

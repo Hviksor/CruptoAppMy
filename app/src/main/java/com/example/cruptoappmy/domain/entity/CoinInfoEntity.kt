@@ -1,4 +1,4 @@
-package com.example.cruptoappmy.domain
+package com.example.cruptoappmy.domain.entity
 
 import android.os.Parcel
 import android.os.Parcelable

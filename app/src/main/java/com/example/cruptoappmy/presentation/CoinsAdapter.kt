@@ -1,10 +1,10 @@
-package com.example.cruptoappmy.presentor
+package com.example.cruptoappmy.presentation
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.example.cruptoappmy.databinding.ItemCoinInfoBinding
-import com.example.cruptoappmy.domain.CoinInfoEntity
+import com.example.cruptoappmy.domain.entity.CoinInfoEntity
 import com.squareup.picasso.Picasso
 
 class CoinsAdapter :

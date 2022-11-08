@@ -1,6 +1,7 @@
-package com.example.cruptoappmy.domain
+package com.example.cruptoappmy.domain.repository
 
 import androidx.lifecycle.LiveData
+import com.example.cruptoappmy.domain.entity.CoinInfoEntity
 
 interface CoinRepository {
     fun getCoinInfoList(): LiveData<List<CoinInfoEntity>>

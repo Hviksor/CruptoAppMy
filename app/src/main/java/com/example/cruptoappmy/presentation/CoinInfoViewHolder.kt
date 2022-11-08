@@ -1,4 +1,4 @@
-package com.example.cruptoappmy.presentor
+package com.example.cruptoappmy.presentation
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cruptoappmy.databinding.ItemCoinInfoBinding

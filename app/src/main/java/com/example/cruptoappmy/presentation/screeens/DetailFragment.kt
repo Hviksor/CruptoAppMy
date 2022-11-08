@@ -1,17 +1,14 @@
-package com.example.cruptoappmy.presentor.screeens
+package com.example.cruptoappmy.presentation.screeens
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.navArgs
 import com.example.cruptoappmy.databinding.FragmentDetailBinding
-import com.example.cruptoappmy.domain.CoinInfoEntity
-import com.example.cruptoappmy.presentor.CoinViewModel
+import com.example.cruptoappmy.domain.entity.CoinInfoEntity
+import com.example.cruptoappmy.presentation.CoinViewModel
 import com.squareup.picasso.Picasso
 
 class DetailFragment : Fragment() {

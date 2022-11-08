@@ -37,6 +37,7 @@ android {
     viewBinding {
         enabled = true
     }
+    namespace 'com.example.cruptoappmy'
 }
 
 dependencies {
@@ -53,16 +54,16 @@ dependencies {
 
     implementation 'androidx.work:work-runtime-ktx:2.7.1'
 
-    def navigation_version = "2.5.2"
+    def navigation_version = "2.6.0-alpha03"
 //navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
     implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
 
 //fragment
-    implementation 'androidx.fragment:fragment-ktx:1.5.2'
+    implementation 'androidx.fragment:fragment-ktx:1.6.0-alpha03'
 
 //lifecycle+viewmodel
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0-alpha02'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0-alpha03'
 
 //coroutin
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'

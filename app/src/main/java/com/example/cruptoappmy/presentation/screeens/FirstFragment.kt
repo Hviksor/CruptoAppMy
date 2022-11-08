@@ -1,19 +1,16 @@
-package com.example.cruptoappmy.presentor.screeens
+package com.example.cruptoappmy.presentation.screeens
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cruptoappmy.R
-import com.example.cruptoappmy.presentor.CoinsAdapter
+import com.example.cruptoappmy.presentation.CoinsAdapter
 import com.example.cruptoappmy.databinding.FragmentFirstBinding
-import com.example.cruptoappmy.presentor.CoinViewModel
+import com.example.cruptoappmy.presentation.CoinViewModel
 
 class FirstFragment : Fragment() {
     private var _binding: FragmentFirstBinding? = null

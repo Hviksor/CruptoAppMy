@@ -1,11 +1,9 @@
-package com.example.cruptoappmy.presentor.screeens
+package com.example.cruptoappmy.presentation.screeens
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import com.example.cruptoappmy.R
-import com.example.cruptoappmy.presentor.screeens.FirstFragment.Companion.FIRST_FRAGMENT_NAME
 
 class MainActivity : AppCompatActivity() {
     lateinit var navController: NavController

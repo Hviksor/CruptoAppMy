@@ -1,11 +1,10 @@
 package com.example.cruptoappmy.data.mapper
 
 import com.example.cruptoappmy.data.database.CoinInfoDbModel
-import com.example.cruptoappmy.data.network.ApiFactory
 import com.example.cruptoappmy.data.network.model.CoinInfoDto
 import com.example.cruptoappmy.data.network.model.CoinJsonContainerDto
 import com.example.cruptoappmy.data.network.model.CoinNamesListDto
-import com.example.cruptoappmy.domain.CoinInfoEntity
+import com.example.cruptoappmy.domain.entity.CoinInfoEntity
 import com.google.gson.Gson
 import java.sql.Time
 import java.sql.Timestamp
