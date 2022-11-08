@@ -25,9 +25,9 @@ class CoinsAdapter :
     override fun onBindViewHolder(holder: CoinInfoViewHolder, position: Int) {
         val coin = getItem(position)
         with(holder.binding) {
-            tvSymbols.text = coin.fromSymbol + " / " + coin.toSymbol
+            tvCoinNameShort.text = coin.fromSymbol + " / " + coin.toSymbol
             lastUpdate.text = coin.lastUpdate
-            price.text = coin.price.toString()
+            tvCurrentPrice.text = coin.price.toString()
             Picasso.get().load(coin.imageUrl).into(ivLogoCoin)
             root.setOnClickListener {
                 onClick?.invoke(coin)
