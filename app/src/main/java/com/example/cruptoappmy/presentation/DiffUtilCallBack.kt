@@ -11,5 +11,7 @@ class DiffUtilCallBack : DiffUtil.ItemCallback<CoinInfoEntity>() {
 
     override fun areContentsTheSame(oldItem: CoinInfoEntity, newItem: CoinInfoEntity): Boolean {
         return oldItem == newItem
+
+
     }
 }
