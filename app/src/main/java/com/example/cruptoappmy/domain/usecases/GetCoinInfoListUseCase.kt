@@ -7,5 +7,8 @@ import com.example.cruptoappmy.domain.entity.CoinInfoEntity
 class GetCoinInfoListUseCase(private val repo: CoinRepositoryImpl) {
     operator fun invoke(): LiveData<List<CoinInfoEntity>> {
         return repo.getCoinInfoList()
+
+
+
     }
 }
